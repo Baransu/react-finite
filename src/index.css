@@ -1,0 +1,220 @@
+*,
+*:before,
+*:after {
+  position: relative;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  background-color: #fafafa;
+}
+
+* {
+  -webkit-transition: all 0.3s cubic-bezier(0.2, 0, 0.4, 1);
+  transition: all 0.3s cubic-bezier(0.2, 0, 0.4, 1);
+}
+
+.ui-app {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-pack: start;
+  -ms-flex-pack: start;
+  justify-content: flex-start;
+  width: 40rem;
+  max-width: 90vw;
+  height: calc(100vh - 2rem);
+}
+.ui-app[data-state='start'] {
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+.ui-app[data-state='loading'] .ui-item {
+  opacity: 0.5;
+}
+.ui-app[data-state='photo'] * {
+  opacity: 0.3;
+}
+.ui-app[data-state='photo'] .ui-photo-detail,
+.ui-app[data-state='photo'] .ui-photo-detail * {
+  opacity: 1;
+}
+.ui-app[data-state='photo'] .ui-items {
+  pointer-events: none;
+}
+.ui-app:after {
+  content: 'current state: ' attr(data-state);
+  position: absolute;
+  bottom: 0.5rem;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.4);
+  font-size: 1rem;
+  padding: 0.5rem 1rem;
+  border-radius: 1rem;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+  transform: translateX(-50%);
+  text-shadow: 0 0 0.1rem black;
+  pointer-events: none;
+}
+
+.ui-form {
+  margin-bottom: 1rem;
+}
+
+.ui-input {
+  -webkit-box-shadow: 0 0.2rem 1rem rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0.2rem 1rem rgba(0, 0, 0, 0.1);
+  display: block;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  width: 100%;
+  border: none;
+  font-size: 2rem;
+  height: 3rem;
+  margin-bottom: 1rem;
+  padding: 0 1rem;
+}
+.ui-input::-webkit-input-placeholder {
+  color: #cdcdcd;
+}
+.ui-input:focus {
+  outline: none;
+}
+
+.ui-buttons {
+  text-align: center;
+}
+
+.ui-button {
+  -webkit-box-shadow: 0 0.2rem 1rem rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0.2rem 1rem rgba(0, 0, 0, 0.1);
+  display: inline-block;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border: none;
+  background-color: #eb7452;
+  color: white;
+  height: 3rem;
+  padding: 0 3rem;
+  border-radius: 3rem;
+  margin: 0 1rem;
+}
+.ui-button[disabled] {
+  opacity: 0.5;
+}
+.ui-button[type='button'] {
+  background-color: #555;
+}
+
+.ui-items {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -ms-flex-negative: 1;
+  flex-shrink: 1;
+  overflow-y: scroll;
+  margin: 0 -0.25rem;
+}
+.ui-items:hover > .ui-item {
+  opacity: 0.7;
+}
+.ui-items:hover > .ui-item:hover {
+  opacity: 1;
+}
+
+.ui-item {
+  display: block;
+  height: 10rem;
+  width: auto;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+  -webkit-box-flex: 0;
+  -ms-flex-positive: 0;
+  flex-grow: 0;
+  margin: 0.25rem;
+  -webkit-animation: item 0.5s calc(var(--i, 0) * 0.05s)
+    cubic-bezier(0.5, 0, 0.2, 1) both;
+  animation: item 0.5s calc(var(--i, 0) * 0.05s) cubic-bezier(0.5, 0, 0.2, 1)
+    both;
+  background-color: #eee;
+}
+@-webkit-keyframes item {
+  from {
+    -webkit-transform: scale(0);
+    transform: scale(0);
+  }
+  to {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+  }
+}
+@keyframes item {
+  from {
+    -webkit-transform: scale(0);
+    transform: scale(0);
+  }
+  to {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+  }
+}
+.ui-photo-detail {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.ui-photo {
+  height: auto;
+  width: auto;
+  min-height: 50vh;
+  min-width: 50vw;
+  max-height: 100%;
+  max-width: 100%;
+}
